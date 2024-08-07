@@ -1,6 +1,6 @@
 {
   "name": "com.jansharp.admin-only-manager",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mark objects as only usable by admins and manage the admin list.",
   "displayName": "Admin Only Manager",
   "unity": "2022.3",
@@ -9,13 +9,13 @@
     "email": "steinmeister36@gmail.com",
     "url": "https://jansharp.github.io"
   },
-  "license": "MIT",
   "dependencies": {
     "com.unity.textmeshpro": "3.0.0"
   },
+  "license": "MIT",
   "vpmDependencies": {
     "com.vrchat.worlds": "^3.6.x"
   },
-  "url": "https://github.com/JanSharp/VRCAdminOnlyManager/releases/download/v0.1.0/com.jansharp.admin-only-manager.zip",
-  "changelogUrl": "https://github.com/JanSharp/VRCAdminOnlyManager/blob/v0.1.0/CHANGELOG.md"
+  "url": "https://github.com/JanSharp/VRCAdminOnlyManager/releases/download/v0.1.1/com.jansharp.admin-only-manager.zip",
+  "changelogUrl": "https://github.com/JanSharp/VRCAdminOnlyManager/blob/v0.1.1/CHANGELOG.md"
 }
