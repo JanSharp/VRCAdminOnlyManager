@@ -1,5 +1,5 @@
 
-# Admin Only Objects
+# Admin Only Manager
 
 Mark objects as only usable by admins and manage said admins.
 

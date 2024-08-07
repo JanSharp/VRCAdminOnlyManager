@@ -194,7 +194,7 @@ namespace JanSharp
 
         public override void OnStringLoadError(IVRCStringDownload result)
         {
-            Debug.Log($"[AdminOnlyObjects] Failed to load admin list"
+            Debug.Log($"[AdminOnlyManager] Failed to load admin list"
                 + (hideUrlInErrorLogMessages ? $", " : $" from {result.Url}, ")
                 + $"error code: {result.ErrorCode}, error message: {result.Error}");
             isInitialUrlRequest = false;

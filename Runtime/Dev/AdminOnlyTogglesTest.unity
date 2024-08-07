@@ -3266,14 +3266,14 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 1661392158}
   toggleColliders:
-  - {fileID: 49858685}
   - {fileID: 732533865}
-  - {fileID: 1550601080}
+  - {fileID: 49858685}
   - {fileID: 1590953623}
   - {fileID: 2133076479}
+  - {fileID: 1550601080}
   toggleRenderers:
-  - {fileID: 49858686}
   - {fileID: 732533866}
+  - {fileID: 49858686}
   - {fileID: 1590953624}
   - {fileID: 2133076480}
   toggleCanvases:

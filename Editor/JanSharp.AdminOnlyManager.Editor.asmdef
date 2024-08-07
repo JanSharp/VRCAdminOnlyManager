@@ -1,13 +1,16 @@
 {
-    "name": "JanSharp.AdminOnlyObjects",
+    "name": "JanSharp.AdminOnlyManager.Editor",
     "rootNamespace": "",
     "references": [
+        "JanSharp.AdminOnlyManager",
         "UdonSharp.Runtime",
-        "VRC.SDKBase",
+        "UdonSharp.Editor",
         "VRC.Udon",
         "Unity.TextMeshPro"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
