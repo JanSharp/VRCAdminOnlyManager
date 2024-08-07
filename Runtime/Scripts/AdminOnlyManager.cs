@@ -13,17 +13,25 @@ namespace JanSharp
         [HideInInspector] public Renderer[] toggleRenderers;
         [HideInInspector] public Canvas[] toggleCanvases;
         [HideInInspector] public CanvasGroup[] toggleCanvasGroups;
+        public bool adminListIsCaseInsensitive = true;
+        [Tooltip("Leading and trailing whitespace is always ignored, both for names defined in this list as "
+            + "well as for player display names.")]
         public string[] adminList;
         public Toggle uiToggle;
         private bool localPlayerIsAdmin;
 
         private void Start()
         {
-            string localPlayerName = Networking.LocalPlayer.displayName.Trim().ToLower();
+            string localPlayerName = Networking.LocalPlayer.displayName.Trim();
+            if (adminListIsCaseInsensitive)
+                localPlayerName = localPlayerName.ToLower();
             localPlayerIsAdmin = false;
             foreach (string adminName in adminList)
             {
-                if (adminName.Trim().ToLower() == localPlayerName)
+                string adminNameForCompare = adminName.Trim();
+                if (adminListIsCaseInsensitive)
+                    adminNameForCompare = adminNameForCompare.ToLower();
+                if (adminNameForCompare == localPlayerName)
                 {
                     localPlayerIsAdmin = true;
                     break;

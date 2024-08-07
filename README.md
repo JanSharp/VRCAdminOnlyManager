@@ -11,6 +11,7 @@ Head to my [VCC Listing](https://jansharp.github.io/vrc/vcclisting.xhtml) and fo
 
 - AdminOnlyManager
   - List of default admins
+  - Option for admin names to be compared with or without case sensitivity
   - UI Toggle
     - to show if the local player is admin
     - to toggle the local player being admin
