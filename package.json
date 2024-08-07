@@ -1,0 +1,18 @@
+{
+  "name": "com.jansharp.admin-only-objects",
+  "version": "0.1.0",
+  "description": "Mark objects as only usable by admins and manage said admins.",
+  "displayName": "Admin Only Objects",
+  "unity": "2022.3",
+  "author": {
+    "name": "JanSharp",
+    "email": "steinmeister36@gmail.com",
+    "url": "https://jansharp.github.io"
+  },
+  "license": "MIT",
+  "vpmDependencies": {
+    "com.vrchat.worlds": "^3.6.x"
+  },
+  "url": "https://github.com/JanSharp/VRCAdminOnlyObjects/releases/download/v0.1.0/com.jansharp.admin-only-objects.zip",
+  "changelogUrl": "https://github.com/JanSharp/VRCAdminOnlyObjects/blob/v0.1.0/CHANGELOG.md"
+}
