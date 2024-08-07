@@ -50,6 +50,10 @@ namespace JanSharp
 
         public static bool RunOnBuild()
         {
+            AdminOnlyManager manager = Object.FindAnyObjectByType<AdminOnlyManager>(FindObjectsInactive.Include);
+            if (manager == null)
+                return true;
+
             AdminOnlyMarker[] toggles = Object.FindObjectsByType<AdminOnlyMarker>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
             List<Canvas> canvases = toggles.SelectMany(t => t.GetComponents<Canvas>()).ToList();
             foreach (Canvas canvas in canvases)
@@ -65,7 +69,6 @@ namespace JanSharp
                 colliderProxy.ApplyModifiedProperties();
             }
 
-            AdminOnlyManager manager = Object.FindAnyObjectByType<AdminOnlyManager>(FindObjectsInactive.Include);
             SerializedObject managerProxy = new SerializedObject(manager);
             SetArrayProperty(managerProxy.FindProperty(nameof(manager.toggleColliders)),
                 toggles.SelectMany(t => t.GetComponents<Collider>()).ToList(),

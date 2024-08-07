@@ -14,11 +14,13 @@ Head to my [VCC Listing](https://jansharp.github.io/vrc/vcclisting.xhtml) and fo
   - Option for the admin list to be loaded from a url
     - The admin list loaded from the given url must be formatted as described in [Loaded Admin List Format](#loaded-admin-list-format)
   - Option for admin names to be compared with or without case sensitivity
-  - Optional UI Toggle
+  - Optional Is Admin UI Toggle
     - to show if the local player is admin
     - to toggle the local player being admin
   - Optional Interact
     - to toggle the local player being admin
+  - Optional Admin List Input Field
+    - to modify the admin list from within the instance, synced
 - AdminOnlyMarker
   - Used by an editor script in order for AdminOnlyManager to know which objects are for admins only
   - If the object a marker is on has one of the following components, that component will be managed

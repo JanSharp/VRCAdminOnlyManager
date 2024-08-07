@@ -10,6 +10,9 @@
     "url": "https://jansharp.github.io"
   },
   "license": "MIT",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.0"
+  },
   "vpmDependencies": {
     "com.vrchat.worlds": "^3.6.x"
   },

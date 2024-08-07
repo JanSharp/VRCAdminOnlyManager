@@ -5,7 +5,8 @@
         "JanSharp.AdminOnlyObjects",
         "UdonSharp.Runtime",
         "UdonSharp.Editor",
-        "VRC.Udon"
+        "VRC.Udon",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [
         "Editor"
