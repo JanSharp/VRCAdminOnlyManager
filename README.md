@@ -30,12 +30,13 @@ Head to my [VCC Listing](https://jansharp.github.io/vrc/vcclisting.xhtml) and fo
     - Any type of renderer - disabled for non admins
     - Canvas - disabled for non admins
     - CanvasGroup - for non admins: Alpha set to 0, Interactable set to false, Blocks Raycasts set to false
-- Raisable Custom Events:
+- Raisable Custom Events, raisable from other scripts or through UI events:
   - `ResetAdminListToDefault` to reset the list to what was set in the inspector (for everyone of course). If something was loaded from the url it would be lost
   - `RemoveAllOverrides` to reset every player's IsAdmin state to match the current admin list, removing any overrides which were applied through the usage of the IsAdmin Toggle, through the Interact event or through third party scripts calling `BecomeAdmin`, `BecomeNonAdmin` or `ToggleIsAdmin`
   - `BecomeAdmin` makes the local player admin regardless of what the admin list says and marks this state as overridden
   - `BecomeAdmin` makes the local player non admin regardless of what the admin list says and marks this state as overridden
   - `ToggleIsAdmin` inverts the local player's admin state and marks this state as overridden
+  - `LoadAdminListFromUrl` refreshes the admin list loaded from the url and syncs the new list
 
 # Loaded Admin List Format
 

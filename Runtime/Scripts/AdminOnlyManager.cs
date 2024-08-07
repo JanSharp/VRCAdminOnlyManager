@@ -47,6 +47,7 @@ namespace JanSharp
         public string[] adminList;
         private string[] defaultAdminList;
         private bool didReceiveData = false;
+        private bool isInitialUrlRequest = false;
         [UdonSynced] private string syncedAdminList;
         private bool isAdmin = false;
         public bool IsAdmin
@@ -101,9 +102,17 @@ namespace JanSharp
                 return;
 
             if (HasAdminListUrl)
-                VRCStringDownloader.LoadUrl(adminListUrl, self);
+            {
+                isInitialUrlRequest = true;
+                LoadAdminListFromUrl();
+            }
             else
                 CheckIfLocalPlayerIsAdmin(); // Use the admin list from the inspector.
+        }
+
+        public void LoadAdminListFromUrl()
+        {
+            VRCStringDownloader.LoadUrl(adminListUrl, self);
         }
 
         private void CheckIfLocalPlayerIsAdmin()
@@ -131,14 +140,23 @@ namespace JanSharp
 
         public override void OnStringLoadSuccess(IVRCStringDownload result)
         {
-            if (didReceiveData) // This takes precedence of the string loaded list.
+            if (isInitialUrlRequest && didReceiveData) // Received data takes precedence of the string loaded list.
+            {
+                isInitialUrlRequest = false;
                 return;
+            }
             LoadAdminListFromString(result.Result);
 
             // Make it so only one player has to load the list from the url... unless there's more than 1
             // second delay between Start and OnDeserialization then they send the request anyway.
             if (Networking.IsOwner(this.gameObject))
                 RequestSerialization();
+            else if (!isInitialUrlRequest)
+            {
+                Networking.SetOwner(Networking.LocalPlayer, this.gameObject);
+                RequestSerialization();
+            }
+            isInitialUrlRequest = false;
         }
 
         private void CleanAdminList()
@@ -179,6 +197,7 @@ namespace JanSharp
             Debug.Log($"[AdminOnlyObjects] Failed to load admin list"
                 + (hideUrlInErrorLogMessages ? $", " : $" from {result.Url}, ")
                 + $"error code: {result.ErrorCode}, error message: {result.Error}");
+            isInitialUrlRequest = false;
             CheckIfLocalPlayerIsAdmin(); // Just use the default one provided from the inspector.
         }
 
