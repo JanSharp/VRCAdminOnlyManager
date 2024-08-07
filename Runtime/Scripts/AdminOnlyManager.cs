@@ -223,10 +223,10 @@ namespace JanSharp
 
         public void RemoveAllOverrides()
         {
-            SendCustomNetworkEvent(NetworkEventTarget.All, nameof(RemoveOverrideInternal));
+            SendCustomNetworkEvent(NetworkEventTarget.All, nameof(RemoveLocalOverride));
         }
 
-        public void RemoveOverrideInternal()
+        public void RemoveLocalOverride()
         {
             IsOverridden = false;
         }

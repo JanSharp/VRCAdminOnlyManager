@@ -33,6 +33,7 @@ Head to my [VCC Listing](https://jansharp.github.io/vrc/vcclisting.xhtml) and fo
 - Raisable Custom Events, raisable from other scripts or through UI events:
   - `ResetAdminListToDefault` to reset the list to what was set in the inspector (for everyone of course). If something was loaded from the url it would be lost
   - `RemoveAllOverrides` to reset every player's IsAdmin state to match the current admin list, removing any overrides which were applied through the usage of the IsAdmin Toggle, through the Interact event or through third party scripts calling `BecomeAdmin`, `BecomeNonAdmin` or `ToggleIsAdmin`
+  - `RemoveLocalOverride` same as `RemoveAllOverrides` except only affecting the local player
   - `BecomeAdmin` makes the local player admin regardless of what the admin list says and marks this state as overridden
   - `BecomeAdmin` makes the local player non admin regardless of what the admin list says and marks this state as overridden
   - `ToggleIsAdmin` inverts the local player's admin state and marks this state as overridden
