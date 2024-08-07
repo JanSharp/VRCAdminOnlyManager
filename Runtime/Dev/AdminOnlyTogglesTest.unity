@@ -2212,10 +2212,14 @@ MonoBehaviour:
   - {fileID: 1550601077}
   toggleCanvasGroups:
   - {fileID: 1771017808}
-  adminListIsCaseInsensitive: 1
-  adminList:
-  - JanSharp
+  self: {fileID: 1661392158}
   isAdminUIToggle: {fileID: 1468067606}
+  adminListIsCaseInsensitive: 1
+  adminListUrl:
+    url: https://gist.githubusercontent.com/JanSharp/b9d9fc71311472f4ba9b9c56c0cb6bcc/raw/admin-list.txt
+  hideUrlInErrorLogMessages: 0
+  adminList:
+  - JanSharp2
 --- !u!1 &1738808551
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEditor;
 using VRC.SDKBase;
 using VRC.SDKBase.Editor.BuildPipeline;
 using UnityEditor.Build;
+using UdonSharpEditor;
 
 namespace JanSharp
 {
@@ -78,6 +79,7 @@ namespace JanSharp
             SetArrayProperty(managerProxy.FindProperty(nameof(manager.toggleCanvasGroups)),
                 toggles.SelectMany(t => t.GetComponents<CanvasGroup>()).ToList(),
                 (p, v) => p.objectReferenceValue = v);
+            managerProxy.FindProperty("self").objectReferenceValue = UdonSharpEditorUtility.GetBackingUdonBehaviour(manager);
             managerProxy.ApplyModifiedProperties();
 
             return true;

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon;
+using VRC.SDK3.StringLoading;
 
 namespace JanSharp
 {
@@ -13,10 +14,22 @@ namespace JanSharp
         [HideInInspector] public Renderer[] toggleRenderers;
         [HideInInspector] public Canvas[] toggleCanvases;
         [HideInInspector] public CanvasGroup[] toggleCanvasGroups;
+        [HideInInspector] [SerializeField] private UdonBehaviour self;
         public Toggle isAdminUIToggle;
         public bool adminListIsCaseInsensitive = true;
+        [Tooltip("Leave empty to just use Admin List instead.\n"
+            + "Create a github gist at: https://gist.github.com\n"
+            + "Make sure to remove the second sha256 part of the github gist url, that way it always points "
+            + "the latest version of the file. Example url:\n"
+            + "https://gist.githubusercontent.com/JanSharp/b9d9fc71311472f4ba9b9c56c0cb6bcc/raw/admin-list.txt")]
+        public VRCUrl adminListUrl;
+        [Tooltip("When retrieving the admin list from the provided url fails an error message gets written "
+            + "the log file which by default contains the url which was attempted to be accessed. When this "
+            + "is enabled however then the error message will not contain the url.")]
+        public bool hideUrlInErrorLogMessages;
         [Tooltip("Leading and trailing whitespace is always ignored, both for names defined in this list as "
-            + "well as for player display names.")]
+            + "well as for player display names.\nUsed if no Admin List Url is provided, as well as if there "
+            + "was an error retrieving the list from the provided url.")]
         public string[] adminList;
         private bool isAdminInternal;
         public bool IsAdmin
@@ -34,6 +47,14 @@ namespace JanSharp
         }
 
         private void Start()
+        {
+            if (!string.IsNullOrWhiteSpace(adminListUrl.Get())) // Cannot actually be null, just checking whitespace.
+                VRCStringDownloader.LoadUrl(adminListUrl, self);
+            else
+                CheckIfLocalPlayerIsAdmin(); // Use the admin list from the inspector.
+        }
+
+        private void CheckIfLocalPlayerIsAdmin()
         {
             string localPlayerName = Networking.LocalPlayer.displayName.Trim();
             if (adminListIsCaseInsensitive)
@@ -54,6 +75,34 @@ namespace JanSharp
             UpdateAdminOnlyComponents();
             if (isAdminUIToggle != null)
                 isAdminUIToggle.isOn = isAdminInternal;
+        }
+
+        public override void OnStringLoadSuccess(IVRCStringDownload result)
+        {
+            string list = result.Result;
+            string[] loadedAdminList = list.Replace('\r', '\n').Split('\n');
+            int count = 0;
+            foreach (string adminName in loadedAdminList)
+                if (!string.IsNullOrWhiteSpace(adminName)) // Cannot actually be null, just checking for whitespace.
+                    count++;
+            adminList = new string[count];
+            int i = 0;
+            foreach (string adminName in loadedAdminList)
+            {
+                string trimmed = adminName.Trim();
+                if (trimmed == "")
+                    continue;
+                adminList[i++] = trimmed;
+            }
+            CheckIfLocalPlayerIsAdmin();
+        }
+
+        public override void OnStringLoadError(IVRCStringDownload result)
+        {
+            Debug.Log($"[AdminOnlyObjects] Failed to load admin list"
+                + (hideUrlInErrorLogMessages ? $", " : $" from {result.Url}, ")
+                + $"error code: {result.ErrorCode}, error message: {result.Error}");
+            CheckIfLocalPlayerIsAdmin(); // Just use the default one provided from the inspector.
         }
 
         public void BecomeAdmin() => IsAdmin = true;
