@@ -2212,9 +2212,10 @@ MonoBehaviour:
   - {fileID: 1550601077}
   toggleCanvasGroups:
   - {fileID: 1771017808}
+  adminListIsCaseInsensitive: 1
   adminList:
   - JanSharp
-  uiToggle: {fileID: 1468067606}
+  isAdminUIToggle: {fileID: 1468067606}
 --- !u!1 &1738808551
 GameObject:
   m_ObjectHideFlags: 0

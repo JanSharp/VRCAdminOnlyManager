@@ -19,7 +19,7 @@ MonoBehaviour:
   scriptVersion: 2
   compiledVersion: 2
   behaviourSyncMode: 1
-  hasInteractEvent: 0
+  hasInteractEvent: 1
   scriptID: -6716814509686894704
   serializationData:
     SerializedFormat: 2
@@ -289,19 +289,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: adminListIsCaseInsensitive
+      Data: isAdminUIToggle
     - Name: $v
       Entry: 7
       Data: 18|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: adminListIsCaseInsensitive
+      Data: isAdminUIToggle
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 19|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: System.Boolean, mscorlib
+      Data: UnityEngine.UI.Toggle, UnityEngine.UI
     - Name: 
       Entry: 8
       Data: 
@@ -343,19 +343,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: adminList
+      Data: adminListIsCaseInsensitive
     - Name: $v
       Entry: 7
       Data: 21|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: adminList
+      Data: adminListIsCaseInsensitive
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 22|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: System.String[], mscorlib
+      Data: System.Boolean, mscorlib
     - Name: 
       Entry: 8
       Data: 
@@ -379,10 +379,64 @@ MonoBehaviour:
       Data: 23|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: adminList
+    - Name: $v
+      Entry: 7
+      Data: 24|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+    - Name: <Name>k__BackingField
+      Entry: 1
+      Data: adminList
+    - Name: <UserType>k__BackingField
+      Entry: 7
+      Data: 25|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: System.String[], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <SystemType>k__BackingField
+      Entry: 9
+      Data: 25
+    - Name: <SyncMode>k__BackingField
+      Entry: 7
+      Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <IsSerialized>k__BackingField
+      Entry: 5
+      Data: true
+    - Name: _fieldAttributes
+      Entry: 7
+      Data: 26|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 24|UnityEngine.TooltipAttribute, UnityEngine.CoreModule
+      Data: 27|UnityEngine.TooltipAttribute, UnityEngine.CoreModule
     - Name: tooltip
       Entry: 1
       Data: Leading and trailing whitespace is always ignored, both for names defined
@@ -407,73 +461,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: uiToggle
-    - Name: $v
-      Entry: 7
-      Data: 25|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
-    - Name: <Name>k__BackingField
-      Entry: 1
-      Data: uiToggle
-    - Name: <UserType>k__BackingField
-      Entry: 7
-      Data: 26|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: UnityEngine.UI.Toggle, UnityEngine.UI
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: <SystemType>k__BackingField
-      Entry: 9
-      Data: 26
-    - Name: <SyncMode>k__BackingField
-      Entry: 7
-      Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: <IsSerialized>k__BackingField
-      Entry: 5
-      Data: true
-    - Name: _fieldAttributes
-      Entry: 7
-      Data: 27|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: localPlayerIsAdmin
+      Data: isAdminInternal
     - Name: $v
       Entry: 7
       Data: 28|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: localPlayerIsAdmin
+      Data: isAdminInternal
     - Name: <UserType>k__BackingField
       Entry: 9
-      Data: 19
+      Data: 22
     - Name: <SystemType>k__BackingField
       Entry: 9
-      Data: 19
+      Data: 22
     - Name: <SyncMode>k__BackingField
       Entry: 7
       Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
