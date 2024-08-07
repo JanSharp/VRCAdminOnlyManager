@@ -1,4 +1,4 @@
-﻿using UdonSharp;
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
@@ -15,6 +15,8 @@ namespace JanSharp
         [HideInInspector] public Canvas[] toggleCanvases;
         [HideInInspector] public CanvasGroup[] toggleCanvasGroups;
         [HideInInspector] [SerializeField] private UdonBehaviour self;
+        [Tooltip("Optional. When provided, the referenced toggle must send the custom event "
+            + "'OnIsAdminToggleValueChanged' to this script.")]
         public Toggle isAdminUIToggle;
         public bool adminListIsCaseInsensitive = true;
         [Tooltip("Leave empty to just use Admin List instead.\n"
@@ -113,7 +115,7 @@ namespace JanSharp
 
         public override void Interact() => ToggleIsAdmin();
 
-        public void OnToggleValueChanged()
+        public void OnIsAdminToggleValueChanged()
         {
             if (isAdminUIToggle == null)
                 return;
