@@ -17,8 +17,10 @@ Head to my [VCC Listing](https://jansharp.github.io/vrc/vcclisting.xhtml) and fo
   - Optional Is Admin UI Toggle
     - to show if the local player is admin
     - to toggle the local player being admin
+      - Any changes to the admin list are then ignored, until `RemoveAllOverrides` is raised
   - Optional Interact
     - to toggle the local player being admin
+      - Any changes to the admin list are then ignored, until `RemoveAllOverrides` is raised
   - Optional Admin List Input Field
     - to modify the admin list from within the instance, synced
 - AdminOnlyMarker
@@ -28,7 +30,12 @@ Head to my [VCC Listing](https://jansharp.github.io/vrc/vcclisting.xhtml) and fo
     - Any type of renderer - disabled for non admins
     - Canvas - disabled for non admins
     - CanvasGroup - for non admins: Alpha set to 0, Interactable set to false, Blocks Raycasts set to false
-- Custom Event "ResetAdminListToDefault" to reset the list to what was set in the inspector (for everyone of course). If something was loaded from the url it would be lost
+- Raisable Custom Events:
+  - `ResetAdminListToDefault` to reset the list to what was set in the inspector (for everyone of course). If something was loaded from the url it would be lost
+  - `RemoveAllOverrides` to reset every player's IsAdmin state to match the current admin list, removing any overrides which were applied through the usage of the IsAdmin Toggle, through the Interact event or through third party scripts calling `BecomeAdmin`, `BecomeNonAdmin` or `ToggleIsAdmin`
+  - `BecomeAdmin` makes the local player admin regardless of what the admin list says and marks this state as overridden
+  - `BecomeAdmin` makes the local player non admin regardless of what the admin list says and marks this state as overridden
+  - `ToggleIsAdmin` inverts the local player's admin state and marks this state as overridden
 
 # Loaded Admin List Format
 

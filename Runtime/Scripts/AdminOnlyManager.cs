@@ -6,6 +6,7 @@ using VRC.Udon;
 using VRC.SDK3.StringLoading;
 using VRC.SDK3.Data;
 using VRC.Udon.Common;
+using VRC.Udon.Common.Interfaces;
 using TMPro;
 
 namespace JanSharp
@@ -61,6 +62,19 @@ namespace JanSharp
                 UpdateAdminOnlyComponents();
             }
         }
+        private bool isOverridden = false;
+        private bool IsOverridden
+        {
+            get => isOverridden;
+            set
+            {
+                if (value == isOverridden)
+                    return;
+                isOverridden = value;
+                if (!isOverridden)
+                    CheckIfLocalPlayerIsAdmin();
+            }
+        }
 
         private float retryBackoff = 1f;
 
@@ -94,6 +108,9 @@ namespace JanSharp
 
         private void CheckIfLocalPlayerIsAdmin()
         {
+            if (IsOverridden)
+                return;
+
             string localPlayerName = Networking.LocalPlayer.displayName.Trim();
             if (adminListIsCaseInsensitive)
                 localPlayerName = localPlayerName.ToLower();
@@ -165,18 +182,41 @@ namespace JanSharp
             CheckIfLocalPlayerIsAdmin(); // Just use the default one provided from the inspector.
         }
 
-        public void BecomeAdmin() => IsAdmin = true;
+        public void BecomeAdmin()
+        {
+            IsOverridden = true;
+            IsAdmin = true;
+        }
 
-        public void BecomeNonAdmin() => IsAdmin = false;
+        public void BecomeNonAdmin()
+        {
+            IsOverridden = true;
+            IsAdmin = false;
+        }
 
-        public void ToggleIsAdmin() => IsAdmin = !IsAdmin;
+        public void ToggleIsAdmin()
+        {
+            IsOverridden = true;
+            IsAdmin = !IsAdmin;
+        }
 
         public override void Interact() => ToggleIsAdmin();
+
+        public void RemoveAllOverrides()
+        {
+            SendCustomNetworkEvent(NetworkEventTarget.All, nameof(RemoveOverrideInternal));
+        }
+
+        public void RemoveOverrideInternal()
+        {
+            IsOverridden = false;
+        }
 
         public void OnIsAdminToggleValueChanged()
         {
             if (isAdminUIToggle == null || isAdminUIToggle.isOn == IsAdmin)
                 return;
+            IsOverridden = true;
             IsAdmin = isAdminUIToggle.isOn;
         }
 
