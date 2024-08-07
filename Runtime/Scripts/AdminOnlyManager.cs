@@ -1,4 +1,4 @@
-using UdonSharp;
+﻿using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
@@ -44,6 +44,7 @@ namespace JanSharp
             + "well as for player display names.\nUsed if no Admin List Url is provided, as well as if there "
             + "was an error retrieving the list from the provided url.")]
         public string[] adminList;
+        private string[] defaultAdminList;
         private bool didReceiveData = false;
         [UdonSynced] private string syncedAdminList;
         private bool isAdmin = false;
@@ -72,6 +73,8 @@ namespace JanSharp
                 isAdminUIToggle.isOn = false;
 
             CleanAdminList(); // Also updates the admin list text field if it is provided.
+            defaultAdminList = adminList;
+
             if (HasAdminListUrl)
                 SendCustomEventDelayedSeconds(nameof(LoadAdminListDelayed), 1f);
             else
@@ -136,9 +139,13 @@ namespace JanSharp
                     continue;
                 cleanAdminList[i++] = trimmed;
             }
-            adminList = cleanAdminList;
-            syncedAdminList = string.Join('\n', adminList);
+            SetAdminList(cleanAdminList);
+        }
 
+        private void SetAdminList(string[] newAdminList)
+        {
+            adminList = newAdminList;
+            syncedAdminList = string.Join('\n', adminList);
             if (adminListField != null)
                 adminListField.text = syncedAdminList;
         }
@@ -184,6 +191,14 @@ namespace JanSharp
             Networking.SetOwner(Networking.LocalPlayer, this.gameObject);
             RequestSerialization();
             OnDeserialization();
+        }
+
+        public void ResetAdminListToDefault()
+        {
+            SetAdminList(defaultAdminList);
+            CheckIfLocalPlayerIsAdmin();
+            Networking.SetOwner(Networking.LocalPlayer, this.gameObject);
+            RequestSerialization();
         }
 
         private void UpdateAdminOnlyComponents()

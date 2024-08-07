@@ -28,6 +28,7 @@ Head to my [VCC Listing](https://jansharp.github.io/vrc/vcclisting.xhtml) and fo
     - Any type of renderer - disabled for non admins
     - Canvas - disabled for non admins
     - CanvasGroup - for non admins: Alpha set to 0, Interactable set to false, Blocks Raycasts set to false
+- Custom Event "ResetAdminListToDefault" to reset the list to what was set in the inspector (for everyone of course). If something was loaded from the url it would be lost
 
 # Loaded Admin List Format
 
