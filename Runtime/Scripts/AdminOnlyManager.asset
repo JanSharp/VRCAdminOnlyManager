@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: AdminOnlyManager
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 3794004f8c0246643819f659f290c53c, type: 2}
+  serializedUdonProgramAsset: {fileID: 11400000, guid: c807cc7905165cef0813cffbc8565445,
+    type: 2}
   udonAssembly: 
   assemblyError: 
   sourceCsScript: {fileID: 11500000, guid: 3326b7185ab5f351caebd9a8d9872a21, type: 3}

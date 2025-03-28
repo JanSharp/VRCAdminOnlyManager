@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: SyncedGameObjectsToggle
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 2e2394665ba23e5e6ad42ff1d069a75a, type: 2}
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 14a3ac02e252be19aaafda15f71880f4,
+    type: 2}
   udonAssembly: 
   assemblyError: 
   sourceCsScript: {fileID: 11500000, guid: f018a91c81917c2e7931ca3c3eba9c38, type: 3}
