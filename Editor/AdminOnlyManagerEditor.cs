@@ -1,11 +1,11 @@
-using System.Linq;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using UdonSharpEditor;
 using UnityEditor;
+using UnityEditor.Build;
+using UnityEngine;
 using VRC.SDKBase;
 using VRC.SDKBase.Editor.BuildPipeline;
-using UnityEditor.Build;
-using UdonSharpEditor;
 
 namespace JanSharp
 {
@@ -23,8 +23,7 @@ namespace JanSharp
         }
     }
 
-    [InitializeOnLoad]
-    [DefaultExecutionOrder(-1000)]
+    [InitializeOnLoad] // [DefaultExecutionOrder] has no effect on [InitializeOnLoad]
     public static class AdminOnlyManagerEditor
     {
         static AdminOnlyManagerEditor()
