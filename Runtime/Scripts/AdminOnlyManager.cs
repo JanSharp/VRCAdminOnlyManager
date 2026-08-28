@@ -1,13 +1,13 @@
-﻿using UdonSharp;
+﻿using TMPro;
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
+using VRC.SDK3.StringLoading;
+using VRC.SDK3.UdonNetworkCalling;
 using VRC.SDKBase;
 using VRC.Udon;
-using VRC.SDK3.StringLoading;
-using VRC.SDK3.Data;
 using VRC.Udon.Common;
 using VRC.Udon.Common.Interfaces;
-using TMPro;
 
 namespace JanSharp
 {
@@ -18,7 +18,7 @@ namespace JanSharp
         [HideInInspector] public Renderer[] toggleRenderers;
         [HideInInspector] public Canvas[] toggleCanvases;
         [HideInInspector] public CanvasGroup[] toggleCanvasGroups;
-        [HideInInspector] [SerializeField] private UdonBehaviour self;
+        [HideInInspector][SerializeField] private UdonBehaviour self;
         [Tooltip("Optional. When provided, the referenced toggle must send the custom event "
             + "'OnIsAdminToggleValueChanged' to this script.")]
         public Toggle isAdminUIToggle;
@@ -226,6 +226,7 @@ namespace JanSharp
             SendCustomNetworkEvent(NetworkEventTarget.All, nameof(RemoveLocalOverride));
         }
 
+        [NetworkCallable]
         public void RemoveLocalOverride()
         {
             IsOverridden = false;
